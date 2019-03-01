@@ -43,8 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="89dp"
             android:baselineAligned="false"
-            android:text="Play"
-            android:textAlignment="center" />
+            android:text="@string/play"
+            android:textAlignment="center"
+            android:onClick="StartGame"/>
 
         <TextView
             android:id="@+id/txtSpace2"
@@ -52,10 +53,11 @@
             android:layout_height="40dp" />
 
         <Button
-            android:id="@+id/btnOption"
+            android:id="@+id/btnCredit"
             android:layout_width="match_parent"
             android:layout_height="89dp"
-            android:text="Option" />
+            android:text="@string/credit"
+            android:onClick="StartCredit"/>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

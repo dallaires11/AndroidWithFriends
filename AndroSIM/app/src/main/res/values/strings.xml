@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">AndroSIM</string>
+    <string name="play">Play</string>
+    <string name="dungeon_without_dragons_t_cr_er_par">Créer par</string>
+    <string name="samuel_dallaire">Samuel Dallaire</string>
+    <string name="steven_duquette">Steven Duquette</string>
+    <string name="maxime_morin">Maxime Morin</string>
+    <string name="jason_morin">Jason Morin</string>
+    <string name="marc_olivier_gaudreault_villeneuve">Marc-Olivier Gaudreault-Villeneuve</string>
+    <string name="credit">Credit</string>
 </resources>

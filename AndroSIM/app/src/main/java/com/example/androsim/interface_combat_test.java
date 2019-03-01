@@ -10,4 +10,8 @@ public class interface_combat_test extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interface_combat_test);
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 }
