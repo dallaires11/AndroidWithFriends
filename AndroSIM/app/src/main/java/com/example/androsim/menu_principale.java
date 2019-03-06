@@ -17,14 +17,13 @@ public class menu_principale extends AppCompatActivity {
     }
 
     public void StartGame(View view) {
-        Log.i("LISTENER", "btnPlay Appuyer");
-        Intent startIntent = new Intent(getApplicationContext(), interface_combat_test.class);
-
+        Log.i("Menu", "btnPlay");
+        Intent startIntent = new Intent(getApplicationContext(), Combat.class);
         startActivity(startIntent);
     }
 
     public void StartCredit(View view){
-        Log.i("LISTENER", "btnCredit Appuyer");
+        Log.i("Menu", "btnCredit");
         Intent startIntent = new Intent(getApplicationContext(), credit.class);
         startActivity(startIntent);
     }

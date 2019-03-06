@@ -11,8 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".credit"></activity>
-        <activity android:name=".interface_combat_test" />
+        <activity android:name=".Combat"></activity>
+        <activity android:name=".credit" />
         <activity
             android:name=".menu_principale"
             android:screenOrientation="portrait">

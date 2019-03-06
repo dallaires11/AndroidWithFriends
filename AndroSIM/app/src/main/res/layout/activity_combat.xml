@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- The main content view -->
+
+    <!--Whats on the main screen-->
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progBarHP"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="100"
+                android:progressTint="@color/red" />
+
+            <ProgressBar
+                android:id="@+id/progBarMana"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="100"
+                android:progressTint="@color/blue" />
+
+            <ImageView
+                android:id="@+id/imgMonstre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:cropToPadding="false"
+                app:srcCompat="@drawable/monstre" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnBaseAttack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/attack"
+                    android:onClick="FaireBaseAttack"/>
+
+                <Button
+                    android:id="@+id/btnRest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/rest"
+                    android:onClick="SeReposer"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progBarHpMonstre"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:progress="100"
+                android:progressTint="@color/red"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.104" />
+
+            <Button
+                android:id="@+id/buttonSpells"
+                android:layout_width="50dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/s_np_ne_nl_nl_ns"
+                android:onClick="openLeftDrawer"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonItems"
+                android:layout_width="50dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/i_nt_ne_nm_ns"
+                android:onClick="openRightDrawer"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+    <!--Les drawers-->
+    <!--<android.support.design.widget.NavigationView
+         android:id="@+id/nav_view_left"
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:layout_gravity="start"
+         android:fitsSystemWindows="true"
+         app:menu="@menu/drawer_left">
+     </android.support.design.widget.NavigationView>
+
+
+     <android.support.design.widget.NavigationView
+     android:id="@+id/nav_view_right"
+     android:layout_width="wrap_content"
+     android:layout_height="match_parent"
+     android:layout_gravity="end"
+     android:fitsSystemWindows="true"
+     app:menu="@menu/drawer_right">
+     </android.support.design.widget.NavigationView>-->
+</android.support.v4.widget.DrawerLayout>
