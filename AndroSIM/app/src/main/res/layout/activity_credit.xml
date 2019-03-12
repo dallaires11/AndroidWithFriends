@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".credit">
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="463dp"
+        android:layout_height="820dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505"
+        app:srcCompat="@drawable/pic_background_menu" />
+
+    <LinearLayout
+        android:layout_width="427dp"
+        android:layout_height="744dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_GameTitle"
+            android:layout_width="match_parent"
+            android:layout_height="216dp"
+            app:srcCompat="@drawable/pic_gametitle" />
+
+        <TextView
+            android:id="@+id/txtSpace1"
+            android:layout_width="match_parent"
+            android:layout_height="67dp" />
+
+        <TextView
+
+            android:id="@+id/txtCredit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dungeon_without_dragons_t_cr_er_par"
+            style="@style/Credit"
+            android:textSize="22sp" />
+
+        <TextView
+
+            android:id="@+id/txtCredit2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/samuel_dallaire"
+            style="@style/Credit"/>
+
+        <TextView
+
+            android:id="@+id/txtCredit3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/steven_duquette"
+            style="@style/Credit"/>
+
+        <TextView
+
+            android:id="@+id/txtCredit4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/maxime_morin"
+            style="@style/Credit"/>
+
+        <TextView
+
+            android:id="@+id/txtCredit5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/jason_morin"
+            style="@style/Credit"/>
+
+        <TextView
+
+            android:id="@+id/txtCredit6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/marc_olivier_gaudreault_villeneuve"
+            style="@style/Credit"/>
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

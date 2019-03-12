@@ -3,15 +3,11 @@ package com.example.androsim;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+public class mini_game_test extends AppCompatActivity {
 
-public class MainActivity extends AppCompatActivity {
-
-    menu_principale menu = new menu_principale();
-
-   /* @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_principale);
-    }*/
-
+        setContentView(R.layout.activity_mini_game_test);
+    }
 }
