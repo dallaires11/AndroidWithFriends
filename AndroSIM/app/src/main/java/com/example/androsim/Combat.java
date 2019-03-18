@@ -76,7 +76,7 @@ public class Combat extends AppCompatActivity {
 
     }
 
-    public void castSpell(int degat) {
+    public void castSpell(int degat,int mana) {
         Log.i("Combat", "caster spell");
         player.mangerDegat(monstre.attaque());
         viePlayer.setProgress(player.getVie(),true);
