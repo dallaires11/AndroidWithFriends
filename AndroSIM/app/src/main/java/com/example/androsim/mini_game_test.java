@@ -20,7 +20,7 @@ public class mini_game_test extends AppCompatActivity implements SensorEventList
     float last_z;
     long lastUpdate;
     final int minDam = 1;
-    final int maxDam = 25;
+    final int maxDam = 800;
     private static final int SHAKE_THRESHOLD = 8000;
 
     @Override
