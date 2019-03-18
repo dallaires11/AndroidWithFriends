@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
+import java.util.Random;
 
 public class mini_game_test extends AppCompatActivity implements SensorEventListener {
 
@@ -18,6 +19,8 @@ public class mini_game_test extends AppCompatActivity implements SensorEventList
     float last_y;
     float last_z;
     long lastUpdate;
+    final int minDam = 1;
+    final int maxDam = 25;
     private static final int SHAKE_THRESHOLD = 8000;
 
     @Override
@@ -58,7 +61,8 @@ public class mini_game_test extends AppCompatActivity implements SensorEventList
                     Toast.makeText(this, "Lighting Bolt!!!", Toast.LENGTH_SHORT).show();
                     //Intent startIntent = new Intent(getApplicationContext(), Combat.class).putExtra("damage", 1);
                     //startActivity(startIntent);
-                    setResult(RESULT_OK, new Intent().putExtra("damage",10));
+                    int damage = new Random().nextInt((maxDam - minDam) + 1) + minDam;
+                    setResult(RESULT_OK, new Intent().putExtra("damage", damage));
                     finish();
                 }
                 last_x = x;
