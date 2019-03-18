@@ -53,9 +53,8 @@ public class Combat extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == REQUEST_GET_DAMAGE && resultCode == Activity.RESULT_OK){
             int damage = data.getIntExtra("damage",0);
-            ProgressBar monsterHealth = (ProgressBar)findViewById(R.id.progBarHpMonstre);
             Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
-            monsterHealth.setProgress(monsterHealth.getProgress() - damage);
+            castSpell(damage);
         }
     }
 
