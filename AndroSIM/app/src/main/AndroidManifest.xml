@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Combat"></activity>
+        <activity android:name=".Navigation"></activity>
+        <activity android:name=".Combat" />
         <activity android:name=".credit" />
         <activity
             android:name=".menu_principale"
