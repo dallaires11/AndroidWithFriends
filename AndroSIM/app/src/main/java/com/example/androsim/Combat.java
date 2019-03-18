@@ -92,6 +92,15 @@ public class Combat extends AppCompatActivity {
 
     }
 
+    public void castSpell(int degat) {
+        Log.i("Combat", "caster spell");
+        player.mangerDegat(monstre.attaque());
+        viePlayer.setProgress(player.getVie(),true);
+        monstre.mangerDegat(degat);
+        vieMonstre.setProgress(monstre.getVie(),true);
+
+    }
+
     public void SeReposer(View view) {
         Log.i("Combat", "SeReposer");
         viePlayer = (ProgressBar) findViewById(R.id.progBarHP);
