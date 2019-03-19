@@ -1,20 +1,32 @@
 package com.example.androsim;
 
+<<<<<<< HEAD
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+=======
+import android.app.Activity;
+import android.content.Intent;
+>>>>>>> origin/Max-Chaos
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.androsim.Model.Monstre;
 import com.example.androsim.Model.Player;
 
 public class Combat extends AppCompatActivity {
+
     DrawerLayout drawerLayout;
+
+
+    private static int REQUEST_GET_DAMAGE = 0;
+
     Player player;
     Monstre monstre;
     ProgressBar viePlayer,manaPlayer,vieMonstre;
@@ -52,6 +64,15 @@ public class Combat extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == REQUEST_GET_DAMAGE && resultCode == Activity.RESULT_OK){
+            int damage = data.getIntExtra("damage",0);
+            Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
+            castSpell(damage);
+        }
+    }
+
+    @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -76,8 +97,13 @@ public class Combat extends AppCompatActivity {
 
     public void openLeftDrawer(View view) {
         Log.i("Combat", "openLeftDrawer");
+
         drawerLayout.openDrawer(GravityCompat.START);
         return;
+
+        //Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
+        //startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+
     }
 
     public void FaireBaseAttack(View view) {

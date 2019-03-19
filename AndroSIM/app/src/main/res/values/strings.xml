@@ -15,4 +15,6 @@
     <string name="go_left">Go left</string>
     <string name="go_straight">Go straight</string>
     <string name="go_right">Go right</string>
+    <string name="infoMiniGame">Shake your phone!</string>
+
 </resources>
