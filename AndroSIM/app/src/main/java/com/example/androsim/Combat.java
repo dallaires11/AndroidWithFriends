@@ -1,10 +1,15 @@
 package com.example.androsim;
 
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -14,16 +19,23 @@ import com.example.androsim.Model.Player;
 
 public class Combat extends AppCompatActivity {
 
+    DrawerLayout drawerLayout;
+
+
     private static int REQUEST_GET_DAMAGE = 0;
 
     Player player;
     Monstre monstre;
     ProgressBar viePlayer,manaPlayer,vieMonstre;
+    MenuItem spell1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
+        setDrawerCombat();
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         if(savedInstanceState == null){
             player = new Player();
@@ -54,13 +66,15 @@ public class Combat extends AppCompatActivity {
         if(requestCode == REQUEST_GET_DAMAGE && resultCode == Activity.RESULT_OK){
             int damage = data.getIntExtra("damage",0);
             Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
-            castSpell(damage);
+            castSpell(damage,10);
         }
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        setDrawerCombat();
         loadPlayer(savedInstanceState);
         loadMonstre(savedInstanceState);
     }
@@ -75,12 +89,19 @@ public class Combat extends AppCompatActivity {
 
     public void openRightDrawer(View view) {
         Log.i("Combat", "openRightDrawer");
+        drawerLayout.openDrawer(GravityCompat.END);
+        return;
     }
 
     public void openLeftDrawer(View view) {
         Log.i("Combat", "openLeftDrawer");
-        Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
-        startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+
+        drawerLayout.openDrawer(GravityCompat.START);
+        return;
+
+        //Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
+        //startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+
     }
 
     public void FaireBaseAttack(View view) {
@@ -92,7 +113,7 @@ public class Combat extends AppCompatActivity {
 
     }
 
-    public void castSpell(int degat) {
+    public void castSpell(int degat,int mana) {
         Log.i("Combat", "caster spell");
         player.mangerDegat(monstre.attaque());
         viePlayer.setProgress(player.getVie(),true);
@@ -130,5 +151,65 @@ public class Combat extends AppCompatActivity {
         vieMonstre.setMin(0);
         vieMonstre.setProgress(savedInstanceState.getInt("viePlayer"));
 
+    }
+
+    private void setDrawerCombat(){
+        spell1 = (MenuItem) findViewById(R.id.spell1);
+        /*spell1.setOnMenuItemClickListener(a -> {
+            Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
+            startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+            return true;
+        });*/
+
+        NavigationView navigationViewLeft = findViewById(R.id.nav_view_left);
+        navigationViewLeft.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        //menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        drawerLayout.closeDrawers();
+
+                        // Add code here to update the UI based on the item selected
+                        // For example, swap UI fragments here
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.spell1:
+                                Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
+                                startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+                                break;
+                        }
+
+                        return true;
+                    }
+                });
+
+        NavigationView navigationViewRight = findViewById(R.id.nav_view_right);
+        navigationViewRight.setNavigationItemSelectedListener(
+                menuItem -> {
+                    // set item as selected to persist highlight
+                    //menuItem.setChecked(true);
+                    // close drawer when item is tapped
+                    drawerLayout.closeDrawers();
+
+                    /*switch (menuItem.getItemId()) {
+                        case R.id.spell1:
+                            Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
+                            startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+                            break;
+                    }*/
+                    /*spell1.setOnMenuItemClickListener(a -> {
+                        //Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
+                        //startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+                        return true;
+                    });*/
+
+
+                    // Add code here to update the UI based on the item selected
+                    // For example, swap UI fragments here
+
+                    return true;
+                });
     }
 }

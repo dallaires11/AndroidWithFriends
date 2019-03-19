@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity
             android:name=".Combat"
             android:screenOrientation="portrait">
@@ -20,6 +21,11 @@
         <activity
             android:name=".credit"
             android:screenOrientation="portrait"/>
+
+        <activity 
+        	android:name=".Navigation"
+        	android:screenOrientation="portrait"/>
+
         <activity
             android:name=".menu_principale"
             android:screenOrientation="portrait">
