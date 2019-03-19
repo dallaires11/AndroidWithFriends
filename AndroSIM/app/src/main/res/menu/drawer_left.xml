@@ -3,15 +3,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/spell1"
-            android:title="Maracas" />
+            android:title="@string/spell1_name" />
         <item
             android:id="@+id/spell2"
-            android:title="Test2" />
+            android:title="@string/spell2_name" />
         <item
             android:id="@+id/spell3"
-            android:title="Test3" />
+            android:title="@string/spell3_name" />
         <item
             android:id="@+id/spell4"
-            android:title="Test4" />
+            android:title="@string/spell4_name" />
     </group>
 </menu>
