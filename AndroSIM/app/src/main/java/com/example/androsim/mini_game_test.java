@@ -40,6 +40,12 @@ public class mini_game_test extends AppCompatActivity implements SensorEventList
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+        sensorManager.registerListener(this,accSensor,SensorManager.SENSOR_DELAY_GAME);
+    }
+
+    @Override
     public void onSensorChanged(SensorEvent sensorEvent){
 
         if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
