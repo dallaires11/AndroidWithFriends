@@ -1,8 +1,12 @@
 package com.example.androsim;
 
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -10,15 +14,18 @@ import com.example.androsim.Model.Monstre;
 import com.example.androsim.Model.Player;
 
 public class Combat extends AppCompatActivity {
-
+    DrawerLayout drawerLayout;
     Player player;
     Monstre monstre;
     ProgressBar viePlayer,manaPlayer,vieMonstre;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
+        setDrawerCombat();
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         if(savedInstanceState == null){
             player = new Player();
@@ -47,6 +54,8 @@ public class Combat extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        setDrawerCombat();
         loadPlayer(savedInstanceState);
         loadMonstre(savedInstanceState);
     }
@@ -61,10 +70,14 @@ public class Combat extends AppCompatActivity {
 
     public void openRightDrawer(View view) {
         Log.i("Combat", "openRightDrawer");
+        drawerLayout.openDrawer(GravityCompat.END);
+        return;
     }
 
     public void openLeftDrawer(View view) {
         Log.i("Combat", "openLeftDrawer");
+        drawerLayout.openDrawer(GravityCompat.START);
+        return;
     }
 
     public void FaireBaseAttack(View view) {
@@ -114,5 +127,41 @@ public class Combat extends AppCompatActivity {
         vieMonstre.setMin(0);
         vieMonstre.setProgress(savedInstanceState.getInt("viePlayer"));
 
+    }
+
+    private void setDrawerCombat(){
+        NavigationView navigationViewLeft = findViewById(R.id.nav_view_left);
+        navigationViewLeft.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        drawerLayout.closeDrawers();
+
+                        // Add code here to update the UI based on the item selected
+                        // For example, swap UI fragments here
+
+                        return true;
+                    }
+                });
+
+        NavigationView navigationViewRight = findViewById(R.id.nav_view_right);
+        navigationViewRight.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        drawerLayout.closeDrawers();
+
+                        // Add code here to update the UI based on the item selected
+                        // For example, swap UI fragments here
+
+                        return true;
+                    }
+                });
     }
 }
