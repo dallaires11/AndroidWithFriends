@@ -29,16 +29,19 @@
         <activity
             android:name=".menu_principale"
             android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".mini_game_test"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".mini_game_FastClick" />
+        <activity android:name=".Intro_Page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".mini_game_test"
-            android:screenOrientation="portrait"
-            />
     </application>
 
 

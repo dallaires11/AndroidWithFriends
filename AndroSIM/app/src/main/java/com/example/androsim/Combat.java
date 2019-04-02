@@ -23,6 +23,7 @@ public class Combat extends AppCompatActivity {
 
 
     private static final int REQUEST_GET_DAMAGE = 0;
+    public static final int REQUEST_CODE = 1014;
 
     Player player;
     Monstre monstre;
@@ -67,6 +68,11 @@ public class Combat extends AppCompatActivity {
             int damage = data.getIntExtra("damage",0);
             Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
             castSpell(damage,10);
+        }
+        if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
+            int score = data.getIntExtra("score", 0);
+            Toast.makeText(this,"Damage : " + score, Toast.LENGTH_SHORT).show();
+            castSpell(score, 10);
         }
     }
 
@@ -176,11 +182,13 @@ public class Combat extends AppCompatActivity {
 
                         switch (menuItem.getItemId()) {
                             case R.id.spell1:
-                                Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
-                                startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+                                Intent Intent1 = new Intent(getApplicationContext(), mini_game_test.class);
+                                startActivityForResult(Intent1, REQUEST_GET_DAMAGE);
                                 break;
 
                             case R.id.spell2:
+                                Intent Intent2 = new Intent(getApplicationContext(), mini_game_FastClick.class);
+                                startActivityForResult(Intent2,REQUEST_CODE);
                                 break;
                         }
 
