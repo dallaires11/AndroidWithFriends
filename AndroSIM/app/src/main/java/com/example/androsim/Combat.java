@@ -22,7 +22,7 @@ public class Combat extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
 
-    private static int REQUEST_GET_DAMAGE = 0;
+    private static final int REQUEST_GET_DAMAGE = 0;
 
     Player player;
     Monstre monstre;
@@ -178,6 +178,9 @@ public class Combat extends AppCompatActivity {
                             case R.id.spell1:
                                 Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
                                 startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+                                break;
+
+                            case R.id.spell2:
                                 break;
                         }
 
