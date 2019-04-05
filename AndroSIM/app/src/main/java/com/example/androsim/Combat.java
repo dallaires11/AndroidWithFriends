@@ -137,6 +137,13 @@ public class Combat extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+                        switch(menuItem.getItemId()){
+                            case :
+
+
+                        }
+
                         // set item as selected to persist highlight
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
