@@ -1,6 +1,7 @@
 package com.example.androsim;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -9,11 +10,13 @@ import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 public class SneakAttack extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
     private Sensor light;
+    private float illuminescence;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,7 @@ public class SneakAttack extends AppCompatActivity implements SensorEventListene
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        float illuminescence = sensorEvent.values[0];
+        illuminescence = sensorEvent.values[0];
         Log.v("DIM", ""+illuminescence);
     }
 
@@ -45,5 +48,11 @@ public class SneakAttack extends AppCompatActivity implements SensorEventListene
     public void onPause(){
         super.onPause();
         sensorManager.unregisterListener(this);
+    }
+
+    public void GetLightAndReturn(View view) {
+        int damage = (int) (800/illuminescence);
+        setResult(RESULT_OK, new Intent().putExtra("damage",damage));
+        finish();
     }
 }

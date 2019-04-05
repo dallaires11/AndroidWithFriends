@@ -1,5 +1,6 @@
 package com.example.androsim;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.androsim.Model.Monstre;
 import com.example.androsim.Model.Player;
@@ -51,6 +53,15 @@ public class Combat extends AppCompatActivity {
         vieMonstre.setMax(monstre.getVieMax());
         vieMonstre.setMin(0);
         vieMonstre.setProgress(monstre.getVieMax());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == SNEAK_ATTACK_REQUEST && resultCode == Activity.RESULT_OK){
+            int damage = data.getIntExtra("damage",0);
+            Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
+            castSpell(damage);
+        }
     }
 
     @Override
@@ -139,9 +150,10 @@ public class Combat extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
                         switch(menuItem.getItemId()){
-                            case :
-
-
+                            case R.id.spell2:
+                                Intent startIntent = new Intent (getApplicationContext(), SneakAttack.class);
+                                startActivityForResult (startIntent, SNEAK_ATTACK_REQUEST);
+                                break;
                         }
 
                         // set item as selected to persist highlight
@@ -174,8 +186,4 @@ public class Combat extends AppCompatActivity {
                 });
     }
 
-    public void SneakAttack(MenuItem item) {
-        Intent sneakAttackIntent = new Intent(this, SneakAttack.class);
-        startActivityForResult(sneakAttackIntent, SNEAK_ATTACK_REQUEST);
-    }
 }
