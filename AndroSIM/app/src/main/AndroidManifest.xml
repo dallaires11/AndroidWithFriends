@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.androsim">
 
+    <uses-feature
+        android:name="android.hardware.Sensor.accelerometer"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,19 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-<<<<<<< HEAD
-        <activity android:name=".Navigation"></activity>
-        <activity android:name=".Combat" />
-        <activity android:name=".credit" />
-=======
+        <activity android:name=".SneakAttack"></activity>
         <activity
             android:name=".Combat"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".credit"
-            android:screenOrientation="portrait"/>
->>>>>>> b8a920ec81f8ed41c7846d4bd0e423e988053ee5
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Navigation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".menu_principale"
             android:screenOrientation="portrait">
@@ -33,6 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".mini_game_test"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

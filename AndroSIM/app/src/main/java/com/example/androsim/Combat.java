@@ -1,5 +1,6 @@
 package com.example.androsim;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,6 +19,7 @@ public class Combat extends AppCompatActivity {
     Player player;
     Monstre monstre;
     ProgressBar viePlayer,manaPlayer,vieMonstre;
+    static final int SNEAK_ATTACK_REQUEST = 2;
 
 
     @Override
@@ -163,5 +165,10 @@ public class Combat extends AppCompatActivity {
                         return true;
                     }
                 });
+    }
+
+    public void SneakAttack(MenuItem item) {
+        Intent sneakAttackIntent = new Intent(this, SneakAttack.class);
+        startActivityForResult(sneakAttackIntent, SNEAK_ATTACK_REQUEST);
     }
 }
