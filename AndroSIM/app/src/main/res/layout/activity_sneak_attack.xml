@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SneakAttack">
 
-    <Button
-        android:id="@+id/btnSneakAttack"
-        android:layout_width="91dp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_sneakattack"
-        android:onClick="GetLightAndReturn"/>
-</RelativeLayout>
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/no_light_sneaky" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnSneakAttack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="230dp"
+            android:layout_marginEnd="0dp"
+            android:onClick="GetLightAndReturn"
+            android:text="@string/btn_sneakattack"
+            android:textAlignment="center"
+            android:textSize="28sp" />
+    </RelativeLayout>
+
+</FrameLayout>
