@@ -25,13 +25,13 @@ public class Combat extends AppCompatActivity {
 
 
     private static final int REQUEST_GET_DAMAGE = 0;
-    public static final int REQUEST_CODE = 1014;
+    private static final int REQUEST_CODE = 1;
+    private static final int SNEAK_ATTACK_REQUEST = 2;
 
     Player player;
     Monstre monstre;
     ProgressBar viePlayer,manaPlayer,vieMonstre;
     MenuItem spell1;
-    static final int SNEAK_ATTACK_REQUEST = 2;
 
 
     @Override
@@ -77,6 +77,12 @@ public class Combat extends AppCompatActivity {
             Toast.makeText(this,"Damage : " + score, Toast.LENGTH_SHORT).show();
             castSpell(score, 10);
         }
+        if(requestCode == SNEAK_ATTACK_REQUEST && resultCode == Activity.RESULT_OK) {
+            int damage = data.getIntExtra("damage", 0);
+            Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
+            castSpell(damage,10);
+        }
+
     }
 
     @Override
@@ -200,6 +206,10 @@ public class Combat extends AppCompatActivity {
                             case R.id.spell2:
                                 Intent Intent2 = new Intent(getApplicationContext(), mini_game_FastClick.class);
                                 startActivityForResult(Intent2,REQUEST_CODE);
+                                break;
+                            case R.id.spell3:
+                                Intent Intent3 = new Intent(getApplicationContext(), SneakAttack.class);
+                                startActivityForResult(Intent3,REQUEST_CODE);
                                 break;
                         }
 
