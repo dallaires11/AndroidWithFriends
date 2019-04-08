@@ -181,14 +181,7 @@ public class Combat extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                        switch(menuItem.getItemId()){
-                            case R.id.spell2:
-                                Intent startIntent = new Intent (getApplicationContext(), SneakAttack.class);
-                                startActivityForResult (startIntent, SNEAK_ATTACK_REQUEST);
-                                break;
-                        }
-
+                        
                         // set item as selected to persist highlight
                         //menuItem.setChecked(true);
                         // close drawer when item is tapped
@@ -209,7 +202,7 @@ public class Combat extends AppCompatActivity {
                                 break;
                             case R.id.spell3:
                                 Intent Intent3 = new Intent(getApplicationContext(), SneakAttack.class);
-                                startActivityForResult(Intent3,REQUEST_CODE);
+                                startActivityForResult(Intent3,SNEAK_ATTACK_REQUEST);
                                 break;
                         }
 
