@@ -1,5 +1,7 @@
 package com.example.androsim;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -29,6 +31,7 @@ public class Combat extends AppCompatActivity {
     Monstre monstre;
     ProgressBar viePlayer,manaPlayer,vieMonstre;
     MenuItem spell1;
+    static final int SNEAK_ATTACK_REQUEST = 2;
 
 
     @Override
@@ -172,6 +175,14 @@ public class Combat extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+                        switch(menuItem.getItemId()){
+                            case R.id.spell2:
+                                Intent startIntent = new Intent (getApplicationContext(), SneakAttack.class);
+                                startActivityForResult (startIntent, SNEAK_ATTACK_REQUEST);
+                                break;
+                        }
+
                         // set item as selected to persist highlight
                         //menuItem.setChecked(true);
                         // close drawer when item is tapped
@@ -223,4 +234,5 @@ public class Combat extends AppCompatActivity {
                     return true;
                 });
     }
+
 }
