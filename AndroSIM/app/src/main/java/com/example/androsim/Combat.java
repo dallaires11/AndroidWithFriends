@@ -1,5 +1,10 @@
 package com.example.androsim;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,6 +14,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
 
 import com.example.androsim.Model.Monstre;
 import com.example.androsim.Model.Player;
@@ -18,12 +25,33 @@ public class Combat extends AppCompatActivity {
     Player player;
     Monstre monstre;
     ProgressBar viePlayer,manaPlayer,vieMonstre;
-
+    String values;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
+        //Intent intent = getIntent();
+        //int test = getIntent().getIntExtra("ID",0);
+       // Toast.makeText(Combat.this, "test " + test, Toast.LENGTH_SHORT).show();
+        Bundle extras = getIntent().getExtras();
+
+        if(extras !=null){
+            values = extras.getString("NDC");
+
+        }
+        db = new DatabaseHelper(this);
+        String salut= db.selectPDV(values);
+        /*Cursor cursor = db.selectPDV(values);
+        while (cursor.moveToNext()){
+            Toast.makeText(getApplicationContext(),"PDV : "+cursor.getString(2),Toast.LENGTH_SHORT).show();
+        }*/
+       // String test = cursor.getString(1);
+       // Toast.makeText(Combat.this, "test123 " + test, Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(Combat.this, "test1234 " + salut, Toast.LENGTH_SHORT).show();
+
         setDrawerCombat();
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -36,8 +64,15 @@ public class Combat extends AppCompatActivity {
             viePlayer.setMin(0);
             manaPlayer.setMax(player.getManaMax());
             manaPlayer.setMin(0);
-            viePlayer.setProgress(player.getVieMax());
-            manaPlayer.setProgress(player.getManaMax());
+            String temp =db.selectPDV(values);
+            int currentPDV= Integer.parseInt((temp));
+            player.setVie(currentPDV);
+            viePlayer.setProgress(currentPDV);
+            temp = db.selectMana(values);
+            int currentMana = Integer.parseInt((temp));
+            player.setMAna(currentMana);
+            manaPlayer.setProgress(currentMana);
+            db.close();
         }
         else{
             loadPlayer(savedInstanceState);
@@ -86,7 +121,12 @@ public class Combat extends AppCompatActivity {
         viePlayer.setProgress(player.getVie(),true);
         monstre.mangerDegat(player.attaque());
         vieMonstre.setProgress(monstre.getVie(),true);
-
+        DatabaseHelper dbHelper= new DatabaseHelper(getApplicationContext());
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("pdv",player.getVie());
+        //db.update("users",values,"ndc= ? ",new String[]{"steven"});
+        dbHelper.updatePDV(player.getVie(),"steven");
     }
 
     public void castSpell(int degat) {

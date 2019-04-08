@@ -12,4 +12,8 @@
     <string name="s_np_ne_nl_nl_ns">S P E L L S</string>
     <string name="rest">Rest</string>
     <string name="attack">Attack</string>
+    <string name="nom_de_compte">Nom de compte</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="connexion">Connexion</string>
+    <string name="ajout_compte">Ajout compte</string>
 </resources>

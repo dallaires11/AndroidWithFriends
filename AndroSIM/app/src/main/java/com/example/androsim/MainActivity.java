@@ -6,8 +6,8 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    menu_principale menu = new menu_principale();
-
+   // menu_principale menu = new menu_principale();
+   Connexion connexion = new Connexion();
    /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
