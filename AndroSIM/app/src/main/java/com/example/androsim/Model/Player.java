@@ -4,7 +4,7 @@ public class Player {
     private int vie,vieMax,mana,manaMax,degat;
 
     public Player(){
-        vieMax = 400;
+        vieMax = 800;
         vie = vieMax;
         manaMax = 200;
         mana = manaMax;
@@ -12,7 +12,7 @@ public class Player {
     }
 
     public Player(int vie,int mana){
-        vieMax = 400;
+        vieMax = 800;
         this.vie = vie;
         manaMax = 200;
         this.mana = mana;
@@ -58,9 +58,13 @@ public class Player {
         return vie;
     }
 
+    public void setVie(int vie){this.vie=vie;}
+
     public int getManaMax(){
         return manaMax;
     }
+
+    public void setMAna (int mana){this.mana = mana;}
 
     public int getMana(){
         return mana;
