@@ -17,11 +17,13 @@
     <string name="go_right">Go right</string>
     <string name="infoMiniGame">Shake your phone!</string>
     <string name="spell1_name">Lightning Bolt</string>
-    <string name="spell2_name">Test2</string>
-    <string name="spell3_name">Test3</string>
+    <string name="spell2_name">Flurry of Blows</string>
+    <string name="spell3_name">Sneak Attack</string>
     <string name="spell4_name">Test4</string>
     <string name="nom_de_compte">Nom de compte</string>
     <string name="mot_de_passe">Mot de passe</string>
     <string name="connexion">Connexion</string>
     <string name="ajout_compte">Ajout compte</string>
+    <string name="menu_sneakattack">SneakAttack</string>
+    <string name="btn_sneakattack">Sneak Attack!</string>
 </resources>

@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.androsim">
 
-    <uses-feature android:name="android.hardware.Sensor.accelerometer" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.Sensor.accelerometer"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".SneakAttack"></activity>
         <activity
             android:name=".Connexion"
             android:screenOrientation="portrait">
@@ -25,20 +27,26 @@
         </activity>
         <activity
             android:name=".Combat"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".credit"
-            android:screenOrientation="portrait"/>
-
-        <activity 
-        	android:name=".Navigation"
-        	android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Navigation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".menu_principale"
             android:screenOrientation="portrait">
-            
+        </activity>
+        <activity
+            android:name=".mini_game_test"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".mini_game_FastClick" />
+        <activity android:name=".Intro_Page">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.app.Activity;
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -27,7 +29,9 @@ public class Combat extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
 
-    private static int REQUEST_GET_DAMAGE = 0;
+    private static final int REQUEST_GET_DAMAGE = 0;
+    private static final int REQUEST_CODE = 1;
+    private static final int SNEAK_ATTACK_REQUEST = 2;
 
     Player player;
     Monstre monstre;
@@ -102,6 +106,17 @@ public class Combat extends AppCompatActivity {
             Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
             castSpell(damage,10);
         }
+        if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
+            int score = data.getIntExtra("score", 0);
+            Toast.makeText(this,"Damage : " + score, Toast.LENGTH_SHORT).show();
+            castSpell(score, 10);
+        }
+        if(requestCode == SNEAK_ATTACK_REQUEST && resultCode == Activity.RESULT_OK) {
+            int damage = data.getIntExtra("damage", 0);
+            Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
+            castSpell(damage,10);
+        }
+
     }
 
     @Override
@@ -205,6 +220,7 @@ public class Combat extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        
                         // set item as selected to persist highlight
                         //menuItem.setChecked(true);
                         // close drawer when item is tapped
@@ -215,8 +231,17 @@ public class Combat extends AppCompatActivity {
 
                         switch (menuItem.getItemId()) {
                             case R.id.spell1:
-                                Intent startIntent = new Intent(getApplicationContext(), mini_game_test.class);
-                                startActivityForResult(startIntent, REQUEST_GET_DAMAGE);
+                                Intent Intent1 = new Intent(getApplicationContext(), mini_game_test.class);
+                                startActivityForResult(Intent1, REQUEST_GET_DAMAGE);
+                                break;
+
+                            case R.id.spell2:
+                                Intent Intent2 = new Intent(getApplicationContext(), mini_game_FastClick.class);
+                                startActivityForResult(Intent2,REQUEST_CODE);
+                                break;
+                            case R.id.spell3:
+                                Intent Intent3 = new Intent(getApplicationContext(), SneakAttack.class);
+                                startActivityForResult(Intent3,SNEAK_ATTACK_REQUEST);
                                 break;
                         }
 
@@ -251,4 +276,5 @@ public class Combat extends AppCompatActivity {
                     return true;
                 });
     }
+
 }
