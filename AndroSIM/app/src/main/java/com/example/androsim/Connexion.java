@@ -5,14 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Connexion extends AppCompatActivity implements View.OnClickListener {
 
@@ -64,7 +61,7 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
                     if (user != null) {
                         Bundle mBundle = new Bundle();
                         //mBundle.putInt("user",user.getId());
-                        Intent intent = new Intent(Connexion.this, Combat.class);
+                        Intent intent = new Intent(Connexion.this, Navigation.class);
                         //int ID = user.getId();
                         intent.putExtra("NDC",user.getNDC());
                         //Toast.makeText(Connexion.this, "ndc " + user.getNDC(), Toast.LENGTH_SHORT).show();
@@ -93,12 +90,5 @@ public class Connexion extends AppCompatActivity implements View.OnClickListener
             return false;
         }
     }
-    /*public void menuPrincipale(View view) {
-        Log.i("MenuPrincipale", "button_connexion");
-        Intent startIntent = new Intent(getApplicationContext(), Combat.class);
-        startActivity(startIntent);
-
-
-    }*/
 
 }

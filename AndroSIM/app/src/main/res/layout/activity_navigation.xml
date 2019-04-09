@@ -26,21 +26,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/buttonNavLeft"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/go_left" />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/buttonNavCenter"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/go_straight" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/buttonNavRight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
