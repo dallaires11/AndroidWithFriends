@@ -103,17 +103,19 @@ public class Combat extends AppCompatActivity {
             if(getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
                 CameraManager camManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
                 String cameraId = null; // Usually back camera is at 0 position.
-                try {
-                    cameraId = camManager.getCameraIdList()[0];
-                    camManager.setTorchMode(cameraId, true);   //Turn ON
-                } catch (CameraAccessException e) {
-                    e.printStackTrace();
-                }
+                for(int x = 0; x<9; x++) {
+                    try {
+                        cameraId = camManager.getCameraIdList()[0];
+                        camManager.setTorchMode(cameraId, true);   //Turn ON
+                    } catch (CameraAccessException e) {
+                        e.printStackTrace();
+                    }
 
-                try {
-                    camManager.setTorchMode(cameraId, false); //Turn OFF
-                } catch (CameraAccessException e) {
-                    e.printStackTrace();
+                    /*try {
+                        camManager.setTorchMode(cameraId, false); //Turn OFF
+                    } catch (CameraAccessException e) {
+                        e.printStackTrace();
+                    }*/
                 }
             }
             castSpell(damage,10);
