@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 public class menu_principale extends AppCompatActivity {
 
@@ -18,14 +17,13 @@ public class menu_principale extends AppCompatActivity {
 
     public void StartGame(View view) {
         Log.i("Menu", "btnPlay");
-        Intent startIntent = new Intent(getApplicationContext(), Combat.class);
+        Intent startIntent = new Intent(getApplicationContext(), Connexion.class);
         startActivity(startIntent);
     }
 
     public void StartCredit(View view){
         Log.i("Menu", "btnCredit");
-        Intent startIntent = new Intent(getApplicationContext(), credit.class);
+        Intent startIntent = new Intent(getApplicationContext(), Credit.class);
         startActivity(startIntent);
     }
 }
-
