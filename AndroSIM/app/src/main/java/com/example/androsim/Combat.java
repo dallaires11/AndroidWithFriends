@@ -1,7 +1,12 @@
 package com.example.androsim;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Camera;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -95,6 +100,22 @@ public class Combat extends AppCompatActivity {
         if(requestCode == REQUEST_GET_DAMAGE && resultCode == Activity.RESULT_OK){
             int damage = data.getIntExtra("damage",0);
             Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
+            if(getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
+                CameraManager camManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+                String cameraId = null; // Usually back camera is at 0 position.
+                try {
+                    cameraId = camManager.getCameraIdList()[0];
+                    camManager.setTorchMode(cameraId, true);   //Turn ON
+                } catch (CameraAccessException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    camManager.setTorchMode(cameraId, false); //Turn OFF
+                } catch (CameraAccessException e) {
+                    e.printStackTrace();
+                }
+            }
             castSpell(damage,10);
         }
         if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
