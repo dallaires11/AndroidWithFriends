@@ -18,7 +18,7 @@
             android:id="@+id/txtTimer"
             android:layout_width="match_parent"
             android:layout_height="137dp"
-            android:text="Timer"
+            android:text="@string/timer"
             android:textAlignment="center"
             android:textSize="64sp"
             android:textStyle="bold" />
@@ -27,7 +27,7 @@
             android:id="@+id/btnPress"
             android:layout_width="match_parent"
             android:layout_height="570dp"
-            android:text="Press"
+            android:text="@string/tap"
             android:onClick="UpdateCount"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

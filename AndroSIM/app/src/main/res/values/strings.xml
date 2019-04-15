@@ -26,4 +26,6 @@
     <string name="ajout_compte">Ajout compte</string>
     <string name="menu_sneakattack">SneakAttack</string>
     <string name="btn_sneakattack">Sneak Attack!</string>
+    <string name="timer">Timer</string>
+    <string name="tap">Tap!</string>
 </resources>
