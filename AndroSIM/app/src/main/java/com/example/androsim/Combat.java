@@ -40,7 +40,6 @@ public class Combat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
-        mp = MediaPlayer.create(getApplicationContext(), R.raw.sound_file_1);
         //Intent intent = getIntent();
         //int test = getIntent().getIntExtra("ID",0);
        // Toast.makeText(Combat.this, "test " + test, Toast.LENGTH_SHORT).show();
@@ -120,6 +119,7 @@ public class Combat extends AppCompatActivity {
                     }
                 }
             }
+            mp = MediaPlayer.create(getApplicationContext(), R.raw.sound_file_1);
             mp.seekTo(0);
             mp.start();
             castSpell(damage,10);
@@ -127,14 +127,19 @@ public class Combat extends AppCompatActivity {
         if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
             int score = data.getIntExtra("score", 0);
             Toast.makeText(this,"Damage : " + score, Toast.LENGTH_SHORT).show();
+            mp = MediaPlayer.create(getApplicationContext(), R.raw.sound_file_2);
+            mp.seekTo(0);
+            mp.start();
             castSpell(score, 10);
         }
         if(requestCode == SNEAK_ATTACK_REQUEST && resultCode == Activity.RESULT_OK) {
             int damage = data.getIntExtra("damage", 0);
             Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
+            mp = MediaPlayer.create(getApplicationContext(), R.raw.sound_file_3);
+            mp.seekTo(0);
+            mp.start();
             castSpell(damage,10);
         }
-
     }
 
     @Override
