@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@android:drawable/screen_background_dark"
         android:orientation="vertical">
 
         <ImageView
@@ -22,29 +23,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:drawable/alert_dark_frame"
             android:gravity="bottom"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonNavLeft"
+                style="@style/AppTheme.Button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/go_left" />
+                android:fontFamily="serif-monospace"
+                android:text="@string/go_left"
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/buttonNavCenter"
+                style="@style/AppTheme.Button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/go_straight" />
+                android:text="@string/go_straight"
+                android:fontFamily="serif-monospace"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
 
             <Button
                 android:id="@+id/buttonNavRight"
+                style="@style/AppTheme.Button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/go_right" />
+                android:text="@string/go_right"
+                android:fontFamily="serif-monospace"
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 

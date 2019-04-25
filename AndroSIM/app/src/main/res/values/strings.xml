@@ -8,8 +8,8 @@
     <string name="jason_morin">Jason Morin</string>
     <string name="marc_olivier_gaudreault_villeneuve">Marc-Olivier Gaudreault-Villeneuve</string>
     <string name="credit">Credit</string>
-    <string name="i_nt_ne_nm_ns">I T E M S</string>
-    <string name="s_np_ne_nl_nl_ns">S P E L L S</string>
+    <string name="items">ITEMS</string>
+    <string name="spells">SPELLS</string>
     <string name="rest">Rest</string>
     <string name="attack">Attack</string>
     <string name="go_left">Go left</string>
@@ -26,4 +26,6 @@
     <string name="ajout_compte">Ajout compte</string>
     <string name="menu_sneakattack">SneakAttack</string>
     <string name="btn_sneakattack">Sneak Attack!</string>
+    <string name="timer">Timer</string>
+    <string name="tap">Tap!</string>
 </resources>

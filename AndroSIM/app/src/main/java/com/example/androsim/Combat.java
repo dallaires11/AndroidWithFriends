@@ -1,7 +1,12 @@
 package com.example.androsim;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -29,6 +34,7 @@ public class Combat extends AppCompatActivity {
     MenuItem spell1;
     String values;
     DatabaseHelper db;
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,19 +101,45 @@ public class Combat extends AppCompatActivity {
         if(requestCode == REQUEST_GET_DAMAGE && resultCode == Activity.RESULT_OK){
             int damage = data.getIntExtra("damage",0);
             Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
+            if(getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
+                CameraManager camManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+                String cameraId = null; // Usually back camera is at 0 position.
+                for(int x = 0; x<9; x++) {
+                    try {
+                        cameraId = camManager.getCameraIdList()[0];
+                        camManager.setTorchMode(cameraId, true);   //Turn ON
+                    } catch (CameraAccessException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        camManager.setTorchMode(cameraId, false); //Turn OFF
+                    } catch (CameraAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            mp = MediaPlayer.create(getApplicationContext(), R.raw.sound_file_1);
+            mp.seekTo(0);
+            mp.start();
             castSpell(damage,10);
         }
         if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
             int score = data.getIntExtra("score", 0);
             Toast.makeText(this,"Damage : " + score, Toast.LENGTH_SHORT).show();
+            mp = MediaPlayer.create(getApplicationContext(), R.raw.sound_file_2);
+            mp.seekTo(0);
+            mp.start();
             castSpell(score, 10);
         }
         if(requestCode == SNEAK_ATTACK_REQUEST && resultCode == Activity.RESULT_OK) {
             int damage = data.getIntExtra("damage", 0);
             Toast.makeText(this, "Damage : " + damage, Toast.LENGTH_SHORT).show();
+            mp = MediaPlayer.create(getApplicationContext(), R.raw.sound_file_3);
+            mp.seekTo(0);
+            mp.start();
             castSpell(damage,10);
         }
-
     }
 
     @Override

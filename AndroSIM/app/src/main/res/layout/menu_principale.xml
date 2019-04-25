@@ -40,12 +40,16 @@
 
         <Button
             android:id="@+id/btnPlay"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="89dp"
+            android:background="@android:drawable/alert_dark_frame"
+            android:backgroundTint="@color/red"
             android:baselineAligned="false"
+            android:fontFamily="@font/asset"
+            android:onClick="StartGame"
             android:text="@string/play"
-            android:textAlignment="center"
-            android:onClick="StartGame"/>
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/txtSpace2"
@@ -54,10 +58,14 @@
 
         <Button
             android:id="@+id/btnCredit"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="89dp"
-            android:text="@string/credit"
-            android:onClick="StartCredit"/>
+            android:background="@android:drawable/alert_dark_frame"
+            android:backgroundTint="@color/red"
+            android:fontFamily="@font/asset"
+            android:onClick="StartCredit"
+            android:text="@string/credit" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

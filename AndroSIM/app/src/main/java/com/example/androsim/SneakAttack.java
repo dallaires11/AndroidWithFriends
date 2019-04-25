@@ -51,7 +51,7 @@ public class SneakAttack extends AppCompatActivity implements SensorEventListene
     }
 
     public void GetLightAndReturn(View view) {
-        int damage = (int) (800/illuminescence);
+        int damage = (int) (800/(illuminescence + 1));
         setResult(RESULT_OK, new Intent().putExtra("damage",damage));
         finish();
     }

@@ -16,7 +16,7 @@ public class mini_game_FastClick extends AppCompatActivity {
     private int count = 0;
 
     private CountDownTimer timer;
-    private long timeleftmilli = 15000;
+    private long timeleftmilli = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class mini_game_FastClick extends AppCompatActivity {
             @Override
             public void onTick(long l) {
                 timeleftmilli = l / 1000;
-                txtTimer.setText(Long.toString(timeleftmilli));
+                txtTimer.setText(Long.toString(timeleftmilli + 1));
             }
 
             @Override
@@ -48,6 +48,6 @@ public class mini_game_FastClick extends AppCompatActivity {
 
 
     public void UpdateCount(View view) {
-        count++;
+        count += 5;
     }
 }

@@ -4,30 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:drawable/screen_background_dark"
     tools:context=".mini_game_FastClick">
 
     <LinearLayout
         android:layout_width="395dp"
         android:layout_height="715dp"
         android:orientation="vertical"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteY="8dp">
 
         <TextView
             android:id="@+id/txtTimer"
             android:layout_width="match_parent"
             android:layout_height="137dp"
-            android:text="Timer"
+            android:text="@string/timer"
             android:textAlignment="center"
             android:textSize="64sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
 
         <Button
             android:id="@+id/btnPress"
+            style="@style/AppTheme.Button"
             android:layout_width="match_parent"
             android:layout_height="570dp"
-            android:text="Press"
-            android:onClick="UpdateCount"/>
+            android:onClick="UpdateCount"
+            android:text="@string/tap" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
