@@ -1,6 +1,7 @@
 package com.example.androsim;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,10 +9,15 @@ import android.view.View;
 
 public class menu_principale extends AppCompatActivity {
 
+    MediaPlayer mp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principale);
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.main_menu_theme);
+        mp.seekTo(0);
+        mp.start();
 
     }
 
