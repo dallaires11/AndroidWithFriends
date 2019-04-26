@@ -16,20 +16,48 @@ public class menu_principale extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principale);
         mp = MediaPlayer.create(getApplicationContext(), R.raw.main_menu_theme);
-        mp.seekTo(0);
+        mp.seekTo(16000);
         mp.start();
 
     }
 
     public void StartGame(View view) {
         Log.i("Menu", "btnPlay");
+        mp.release();
         Intent startIntent = new Intent(getApplicationContext(), Connexion.class);
         startActivity(startIntent);
     }
 
     public void StartCredit(View view){
         Log.i("Menu", "btnCredit");
+        mp.release();
         Intent startIntent = new Intent(getApplicationContext(), Credit.class);
         startActivity(startIntent);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mp.release();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mp.release();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mp.start();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.main_menu_theme);
+        mp.seekTo(16000);
+        mp.start();
     }
 }

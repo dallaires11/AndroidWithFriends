@@ -1,6 +1,7 @@
 package com.example.androsim;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.widget.Button;
 public class Navigation extends AppCompatActivity {
 
     Button gauche,droite,centre;
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,9 @@ public class Navigation extends AppCompatActivity {
         gauche = (Button) findViewById(R.id.buttonNavLeft);
         centre = (Button) findViewById(R.id.buttonNavCenter);
         droite = (Button) findViewById(R.id.buttonNavRight);
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.navigation_theme);
+        mp.seekTo(0);
+        mp.start();
 
         gauche.setOnClickListener(event -> {
             navigation();
@@ -66,5 +71,36 @@ public class Navigation extends AppCompatActivity {
         Log.i("Nav", "Entrer en ombat");
         Intent startIntent = new Intent(getApplicationContext(), Combat.class);
         startActivity(startIntent);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mp.release();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mp.release();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mp.start();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.navigation_theme);
+        mp.seekTo(0);
+        mp.start();
     }
 }

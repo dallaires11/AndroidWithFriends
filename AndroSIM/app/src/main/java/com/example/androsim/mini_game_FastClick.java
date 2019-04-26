@@ -29,6 +29,11 @@ public class mini_game_FastClick extends AppCompatActivity {
         startTimer();
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
     private void startTimer() {
 
         timer = new CountDownTimer(timeleftmilli, 1000) {
