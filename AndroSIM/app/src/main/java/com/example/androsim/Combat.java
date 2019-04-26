@@ -35,16 +35,11 @@ public class Combat extends AppCompatActivity {
     String values;
     DatabaseHelper db;
     MediaPlayer mp;
-    MediaPlayer themeMp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
-        themeMp = MediaPlayer.create(getApplicationContext(), R.raw.combat_theme);
-        themeMp.seekTo(0);
-        themeMp.setLooping(true);
-        themeMp.start();
         //Intent intent = getIntent();
         //int test = getIntent().getIntExtra("ID",0);
        // Toast.makeText(Combat.this, "test " + test, Toast.LENGTH_SHORT).show();
@@ -145,10 +140,6 @@ public class Combat extends AppCompatActivity {
             mp.start();
             castSpell(damage,10);
         }
-        themeMp = MediaPlayer.create(getApplicationContext(), R.raw.combat_theme);
-        themeMp.seekTo(0);
-        themeMp.setLooping(true);
-        themeMp.start();
     }
 
     @Override
@@ -262,39 +253,5 @@ public class Combat extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                     return true;
                 });
-    }
-
-    @Override
-    public void onBackPressed() {
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        themeMp.release();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        themeMp.release();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        themeMp.start();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        if(!themeMp.isPlaying()) {
-            themeMp = MediaPlayer.create(getApplicationContext(), R.raw.combat_theme);
-            themeMp.seekTo(0);
-            themeMp.setLooping(true);
-            themeMp.start();
-        }
     }
 }

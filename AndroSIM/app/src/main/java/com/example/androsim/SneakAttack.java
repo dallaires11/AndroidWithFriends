@@ -55,9 +55,4 @@ public class SneakAttack extends AppCompatActivity implements SensorEventListene
         setResult(RESULT_OK, new Intent().putExtra("damage",damage));
         finish();
     }
-
-    @Override
-    public void onBackPressed() {
-
-    }
 }
