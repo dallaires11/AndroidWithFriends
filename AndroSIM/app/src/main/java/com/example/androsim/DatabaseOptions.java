@@ -3,7 +3,7 @@ package com.example.androsim;
 public class DatabaseOptions {
 
     public static final String DB_NAME = "local.db";
-    public static final int DB_VERSION = 3;
+    public static final int DB_VERSION = 4;
 
     public static final String USERS_TABLE = "users";
 
@@ -18,8 +18,8 @@ public class DatabaseOptions {
                     ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     NOMDECOMPTE + " TEXT ," +
                     PASSWORD + " TEXT ,"+
-                    POINTDEVIE +" INTEGER DEFAULT 400 ,"+
-                    MANA +" INTEGER DEFAULT 100 ," +
+                    POINTDEVIE +" INTEGER DEFAULT 800 ,"+
+                    MANA +" INTEGER DEFAULT 200 ," +
                     "UNIQUE("+ NOMDECOMPTE+"));";
 
 }

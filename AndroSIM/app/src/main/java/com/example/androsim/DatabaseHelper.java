@@ -80,6 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " where " + DatabaseOptions.NOMDECOMPTE + "='" + where + "';", null);
         cursor.moveToFirst();
         test= cursor.getString((3));
+        Log.i("BDSD",test + " NDC + "+ where);
         return test;
 
     }
@@ -96,19 +97,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void updatePDV(int pdv,String ndc){
+        String[] whereArgs= new String[]{
+                ndc
+        };
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("UPDATE "+ DatabaseOptions.USERS_TABLE+ " SET "+DatabaseOptions.POINTDEVIE+" =300/*+ pdv+*/ WHERE "+
-                DatabaseOptions.NOMDECOMPTE + "='"+ndc + "';",null );
-        cursor.close();
-        cursor = db.rawQuery("select *from " + DatabaseOptions.USERS_TABLE +
-                " where " + DatabaseOptions.NOMDECOMPTE + "='" + "steven" + "';", null);
-        cursor.moveToFirst();
-        Log.i("BD","REQUETE" + "UPDATE "+ DatabaseOptions.USERS_TABLE+ " SET "+DatabaseOptions.POINTDEVIE+" =300/*+ pdv+*/ WHERE "+
-                DatabaseOptions.NOMDECOMPTE + "='"+ndc + "';"  );
-        Log.i (" BD ", "SELECT IN UPDATE " + cursor.getString(3));
+        Log.i("BDSD","REQUETE " + "UPDATE "+ DatabaseOptions.USERS_TABLE+ " SET "+DatabaseOptions.POINTDEVIE+" = "+pdv +  " WHERE "+
+                DatabaseOptions.NOMDECOMPTE + "=?"+whereArgs[0] );
+        Cursor cursor = db.rawQuery("UPDATE "+ DatabaseOptions.USERS_TABLE+ " SET "+DatabaseOptions.POINTDEVIE+" = "+ pdv  +  " WHERE "+
+                DatabaseOptions.NOMDECOMPTE + "=?",whereArgs );
 
+        cursor.moveToFirst();
     }
 
+    public void updateMana(int mana,String ndc){
+        String[] whereArgs= new String[]{
+                ndc
+        };
+        SQLiteDatabase db = this.getWritableDatabase();
+        Log.i("BDSD","REQUETE " + "UPDATE "+ DatabaseOptions.USERS_TABLE+ " SET "+DatabaseOptions.MANA+" = "+mana +  " WHERE "+
+                DatabaseOptions.NOMDECOMPTE + "=?"+whereArgs[0] );
+        Cursor cursor = db.rawQuery("UPDATE "+ DatabaseOptions.USERS_TABLE+ " SET "+DatabaseOptions.MANA+" = "+ mana  +  " WHERE "+
+                DatabaseOptions.NOMDECOMPTE + "=?",whereArgs );
+
+        cursor.moveToFirst();
+    }
+    public void safeDonneesPersonnage(int pdv, int mana,String ndc){
+        updateMana(mana,ndc);
+        updatePDV(pdv,ndc);
+
+    }
     /*public Cursor getPDV(String condition) {
         SQLiteDatabase db = this.getWritableDatabase();
         String from[] = {DatabaseOptions.CREATE_USERS_TABLE_};
