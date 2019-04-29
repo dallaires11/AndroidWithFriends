@@ -64,7 +64,7 @@ public class Player {
         return manaMax;
     }
 
-    public void setMAna (int mana){this.mana = mana;}
+    public void setMana (int mana){this.mana = mana;}
 
     public int getMana(){
         return mana;

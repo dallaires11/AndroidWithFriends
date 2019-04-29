@@ -1,9 +1,11 @@
 package com.example.androsim;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.media.MediaPlayer;
@@ -45,32 +47,27 @@ public class Combat extends AppCompatActivity {
         themeMp.seekTo(0);
         themeMp.setLooping(true);
         themeMp.start();
-        //Intent intent = getIntent();
+        Intent intent = getIntent();
         //int test = getIntent().getIntExtra("ID",0);
        // Toast.makeText(Combat.this, "test " + test, Toast.LENGTH_SHORT).show();
-        /*Bundle extras = getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
 
         if(extras !=null){
             values = extras.getString("NDC");
 
         }
-        db = new DatabaseHelper(this);
-        String salut= db.selectPDV(values);
-        /*Cursor cursor = db.selectPDV(values);
-        while (cursor.moveToNext()){
-            Toast.makeText(getApplicationContext(),"PDV : "+cursor.getString(2),Toast.LENGTH_SHORT).show();
-        }*/
-       // String test = cursor.getString(1);
-       // Toast.makeText(Combat.this, "test123 " + test, Toast.LENGTH_SHORT).show();
-/*
-        Toast.makeText(Combat.this, "test1234 " + salut, Toast.LENGTH_SHORT).show();
-        */
+        DatabaseHelper dbHelper= new DatabaseHelper(getApplicationContext());
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String temp;
+        temp = dbHelper.selectPDV(values);
         setDrawerCombat();
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         if(savedInstanceState == null){
             player = new Player();
-
+            player.setVie(Integer.parseInt(temp));
+            temp = dbHelper.selectMana(values);
+            player.setMana(Integer.parseInt(temp));
             viePlayer = (ProgressBar) findViewById(R.id.progBarHP);
             manaPlayer = (ProgressBar) findViewById(R.id.progBarMana);
             viePlayer.setMax(player.getVieMax());
@@ -188,8 +185,13 @@ public class Combat extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("pdv",player.getVie());
-        //db.update("users",values,"ndc= ? ",new String[]{"steven"});
+        db.update("users",values,"ndc= ? ",new String[]{"steven"});
         dbHelper.updatePDV(player.getVie(),"steven");*/
+        DatabaseHelper dbHelper= new DatabaseHelper(getApplicationContext());
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        dbHelper.safeDonneesPersonnage(player.getVie(),player.getMana(),values);
+        //db.update("users",values,"ndc= ? ",new String[]{"test"});
+
     }
 
     public void castSpell(int degat,int mana) {
@@ -206,6 +208,10 @@ public class Combat extends AppCompatActivity {
         player.repos();
         player.mangerDegat(monstre.attaque());
         viePlayer.setProgress(player.getVie(),true);
+        DatabaseHelper dbHelper= new DatabaseHelper(getApplicationContext());
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        //dbHelper.selectPDV("sam");
 
     }
 

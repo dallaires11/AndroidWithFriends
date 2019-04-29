@@ -1,6 +1,7 @@
 package com.example.androsim;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,12 +12,22 @@ public class Navigation extends AppCompatActivity {
 
     Button gauche,droite,centre;
     MediaPlayer mp;
+    String values;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+        Intent intent = getIntent();
+        Bundle extras = getIntent().getExtras();
 
+        if(extras !=null){
+            values = extras.getString("NDC");
+
+        }
+        /*DatabaseHelper dbHelper= new DatabaseHelper(getApplicationContext());
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String salut= dbHelper.selectPDV(values);*/
         gauche = (Button) findViewById(R.id.buttonNavLeft);
         centre = (Button) findViewById(R.id.buttonNavCenter);
         droite = (Button) findViewById(R.id.buttonNavRight);
@@ -70,6 +81,7 @@ public class Navigation extends AppCompatActivity {
     void rencontreEnemie(){
         Log.i("Nav", "Entrer en ombat");
         Intent startIntent = new Intent(getApplicationContext(), Combat.class);
+        startIntent.putExtra("NDC",values);
         startActivity(startIntent);
     }
 
